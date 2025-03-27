@@ -4,13 +4,23 @@
 
 :root {
   --primary-color: #ff862c;
+  --primary-color-hover: #d35e05;
   --secondary-color: #f0f0f0;
   --tertiary-color: #333;
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
-  background-image: url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='58' height='100.23' patternTransform='scale(1) rotate(0)'><rect x='0' y='0' width='100%' height='100%' fill='hsla(240,6.7%,17.6%,1)'/><path d='M12.127 73.813l.013 5.643 4.893-2.81zm-6.01-3.47l16.928 9.773-16.93 9.777zm-6.02-3.476l28.967 16.725L.13 100.262zm16.97 23.616l-.015 5.643-4.893-2.81zm6.01-3.472L6.148 96.786l16.93 9.776zM.128 100.261l28.935 16.669m16.874-23.67l-.013-5.644-4.894 2.81zm6.01 3.47L35.02 86.956l16.931-9.775zM29 83.482l28.936-16.669.032 33.393m-28.904 2.834l4.881-2.834-4.88-2.832zm0 6.94V90.433l16.932 9.773zm0 6.952V83.482l28.904 16.724zM58 13.915l-4.882 2.833L58 19.582zm0-6.94v19.548l-16.932-9.774zm0-6.951v33.448L29.096 16.748m0-13.89l4.88-2.833-4.88-2.833zm0 6.94V-9.749L46.026.025zm0 6.95v-33.449L58 .024zM16.94 23.696l-4.894-2.81-.014 5.643zm6.01-3.47L6.02 29.998V10.448zM0 33.472L.033.08 28.97 16.75m-5.99-29.92L6.053-3.393l16.93 9.776zM28.97 16.75L29-16.644.033.08m40.966 23.615l.013 5.643 4.893-2.81zm-6.01-3.47l16.928 9.774-16.93 9.775zm22.947 13.248L29 50.143l-.031-33.394M16.97 43.197l-.013-5.643-4.894 2.81zm6.01 3.47L6.053 36.894l16.93-9.776zM29 50.143L.032 33.419l28.936-16.67m16.937 57.008l-4.893-2.81-.014 5.644zm6.01-3.47L34.988 80.06v-19.55zM29 64.035l-4.88 2.832L29 69.7zm0-6.942v19.549L12.07 66.867zM.097 66.867L29 50.143v33.449m16.938-43.228l-.013 5.644-4.894-2.811zm6.01-3.47L35.02 46.667l16.931 9.777zM29 50.143l28.936 16.67.032-33.394M.097 52.975l4.88-2.832-4.88-2.833zm0 6.942V40.368l16.931 9.775zm0 6.95V33.42'  stroke-linecap='square' stroke-width='1.5' stroke='%23ff862cff' fill='none'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(%23a)'/></svg>");
+  font-family: 'Arial', sans-serif;
+  background-image: url('../image/pedro.png');
+  /* Local image */
+  background-size: 50px 50px;
+  /* Small size for repeating pattern */
+  background-repeat: repeat;
+  /* Repeat the image */
+  background-position: center;
+  /* Center the pattern */
+  margin: 0;
+  padding: 0;
 }
 
 p {
@@ -20,23 +30,25 @@ p {
 
 h1 {
   margin-bottom: 5vh;
+  text-transform: uppercase;
+  font-family: "Roboto";
+  letter-spacing: 2px;
 }
 
 .outerWrapper {
   display: flex;
   justify-content: center;
   height: 100vh;
-  width: 100vw;
+  width: 80vw;
 }
 
 .innerWrapper {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 70vw;
   background-color: #f0f0f0;
-  padding: 5vh;
+  justify-content: center;
+  padding: 10vw;
 }
 
 button.btn {
@@ -52,11 +64,114 @@ button.btn {
 }
 
 .age {
-  font-size: 100px;
+  font-size: 39px;
   font-weight: bolder;
   background-color: var(--primary-color);
   padding: 40px;
   border-radius: 100%;
   margin: 5vw;
-  color: #fff;
+  color: #000;
+  border: 5px solid #000
+}
+
+.content {
+  text-align: center;
+}
+
+.inputWrapper {
+  margin-top: 5vh;
+}
+
+input#inputField {
+  padding: 10px 20px;
+  margin-top: 2vh;
+}
+
+.btn-second {
+  background-color: var(--primary-color);
+  padding: 10px 20px;
+  border: 0px;
+  margin-top: 2vh;
+  font-size: 17px;
+  cursor: pointer;
+  color: #000;
+  border-radius: 5px;
+
+}
+
+.btn-second:hover {
+  background-color: var(--primary-color-hover);
+}
+
+.btn-second>i.fas {
+  margin-right: 10px;
+}
+
+.buttonWrapper {
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Updated CSS for the rainbow unicorn hover effect */
+.btn-second {
+  background-color: #ffa500;
+  /* Orange by default */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.btn-second:hover {
+  background: linear-gradient(45deg, #ff0000, #ff7300, #ffeb00, #47ff00, #00ffee, #2b65ff, #8000ff, #ff0080);
+  background-size: 300%;
+  animation: rainbow 1.5s infinite linear;
+  transform: scale(1.1);
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Raccoon explosion effect */
+.raccoon {
+  position: absolute;
+  width: 70px;
+  /* Increased size */
+  height: 70px;
+  /* Increased size */
+  background-image: url('../image/pedro.png');
+  /* Local image */
+  background-size: cover;
+  background-position: center;
+  animation: fly 2s ease-out forwards;
+  /* Increased animation duration for a smoother effect */
+  pointer-events: none;
+}
+
+@keyframes fly {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(calc(var(--x) * 300px), calc(var(--y) * 300px)) scale(0.5);
+    /* Increased travel distance */
+    opacity: 0;
+  }
 }

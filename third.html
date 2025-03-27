@@ -5,16 +5,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <title>Rätsel 3</title>
 </head>
 
 <body>
   <div class="outerWrapper">
     <div class="innerWrapper">
-      <h1>Rätsel 3</h1>
-      <p>Ich trag dich still – beschwer mich nicht.
-        Doch heute hab ich etwas mehr.</p>
-      <button onclick="onClick()" class="btn">weiter</button>
+      <h1>Rätsel #3</h1>
+      <div id="sentences">
+        <ol>
+          <li style="display: list-item;">Wenn deine Spitzen mich berühren bin ich hart.</li>
+          <li style="display: none;">Bei manch anderem mach ich Geräusche, doch bei dir bin ich leise.</li>
+          <li style="display: none;">Größtenteils bin ich weiß.</li>
+          <li style="display: none;">Ich mache immer, dass was du mir sagst.</li>
+          <li style="display: none;">Du berührst mich täglich.</li>
+          <li style="display: none;">Ein paar Teile sind farbig.</li>
+          <li style="display: none;">Copy Paste mach ich gerne.</li>
+          <li style="display: none;">Ich bin deine Tastatur.</li>
+        </ol>
+      </div>
+
+      <div class="buttonWrapper">
+        <button id="tippButton" onclick="showNextSentence()" class="btn-second">
+          <i class="fas fa-lightbulb"></i> Gib mir einen Tipp
+        </button>
+        <button onclick="onClick()" class="btn-second" style="display: none;">weiter</button>
+        <button onclick="onFoundHint()" class="btn-second">
+          <i class="fas fa-check"></i> Hab den Hinweis gefunden
+        </button>
+      </div>
+
     </div>
   </div>
 </body>
@@ -22,7 +44,35 @@
 </html>
 
 <script>
+  let currentSentenceIndex = 1; // Start from the second hint since the first is already visible
+
+  function showNextSentence() {
+    const sentences = document.querySelectorAll('#sentences ol li');
+    if (currentSentenceIndex < sentences.length) {
+      sentences[currentSentenceIndex].style.display = 'list-item';
+      currentSentenceIndex++;
+    }
+    if (currentSentenceIndex === sentences.length) {
+      document.getElementById('tippButton').style.display = 'none';
+      document.getElementById('weiterButton').style.display = 'block';
+    }
+  }
+
   function onClick() {
     window.location.href = 'fourth.html';
+  }
+
+  function onFoundHint() {
+    // Trigger confetti animation
+    confetti({
+      particleCount: 150,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+
+    // Redirect to the next page after a short delay
+    setTimeout(() => {
+      window.location.href = 'fourth.html';
+    }, 500); // 2-second delay for the confetti animation
   }
 </script>

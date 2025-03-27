@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <title>Happy birthday Lobster</title>
 </head>
 
@@ -13,11 +14,21 @@
   <div class="outerWrapper">
     <div class="innerWrapper">
       <div class="age">39</div>
-      <h1>Happy birthday Lobster</h1>
-      <p>Mit dem Alter braucht man ja bekanntlich etwas Gehirnsport – also Schluss mit gemütlichem Geschenke-Auspacken!
-        Heute musst du dir dein Geschenk erspielen. Keine Sorge, es gibt keine Matheaufgaben … oder vielleicht doch? 😏
-      </p>
-      <button onclick="onClick()" class="btn">go</button>
+      <div class="content">
+        <h1>Happy birthday Lobster</h1>
+        <p>Mit deinem neuen Alter braucht man ja bekanntlich etwas Gehirnsport. Also Schluss mit gemütlichem
+          Geschenke-Auspacken! <br /> <br />
+          Heute musst du dir dein Geschenk erspielen. Keine Sorge, es gibt keine Matheaufgaben … oder vielleicht doch?
+          😏
+        </p>
+        <div class="inputWrapper">
+          <p>Sprich Freund und tritt ein</p>
+          <input type="text" id="inputField" placeholder="Gib hier das Wort ein" oninput="checkInput()" />
+
+        </div>
+      </div>
+
+      <button id="goButton" onclick="onClick()" class="btn" style="display: none;">start game</button>
     </div>
   </div>
 </body>
@@ -25,6 +36,16 @@
 </html>
 
 <script>
+  function checkInput() {
+    const inputField = document.getElementById('inputField');
+    const goButton = document.getElementById('goButton');
+    if (inputField.value.trim() === 'Freund' || inputField.value.trim() === 'freund') {
+      goButton.style.display = 'block';
+    } else {
+      goButton.style.display = 'none';
+    }
+  }
+
   function onClick() {
     window.location.href = 'first.html';
   }

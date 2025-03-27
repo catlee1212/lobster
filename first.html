@@ -5,26 +5,94 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <title>Rätsel 1</title>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 
 <body>
   <div class="outerWrapper">
     <div class="innerWrapper">
-      <h1>Rätsel 1 </h1>
-      <p>Ich bin in deinem Blick und stets in Reichweite.
-        Aber: Kein Klick bringt mich hervor, kein Scrollen macht mich sichtbar.
-        Nur wer fühlt kann mich befreien.
-      </p>
-      <button onclick="onClick()" class="btn">weiter</button>
-    </div>
-  </div>
+      <h1>Rätsel #1</h1>
+      <div id="sentences">
+        <ol>
+          <li style="display: list-item;">Du siehst mich an, doch siehst du mich nicht.</li>
+          <li style="display: none;">Mich gibt's alleine aber beliebter bin ich im Doppelpack.</li>
+          <li style="display: none;">Manchmal bin ich bunt, manchmal schwarz.</li>
+          <li style="display: none;">Ich zeige dir nicht nur die ganze Welt, sondern auch Dinge die darüber hinaus
+            gehen.</li>
+          <li style="display: none;">Ich mache Daten sichtbar.</li>
+          <li style="display: none;">Ohne rot, grün und blau würde ich nicht funktionieren.</li>
+          <li style="display: none;">Einen Rahmen hab ich auch.</li>
+          <li style="display: none;">Pixel für Pixel zeig ich dir auf.</li>
+          <li style="display: none;">Ich bin dein Bildschirm.</li>
+        </ol>
+      </div>
+
+      <div class="buttonWrapper">
+        <button id="tippButton" onclick="showNextSentence()" class="btn-second">
+          <i class="fas fa-lightbulb"></i> Gib mir einen Tipp
+        </button>
+        <button id="weiterButton" onclick="onClick()" class="btn-second" style="display: none;">weiter</button>
+        <button id="foundHintButton" onclick="onFoundHint()" class="btn-second">
+          <i class="fas fa-check"></i> Hab den Hinweis gefunden
+        </button>
+      </div>
+    </div> <!-- Closing innerWrapper -->
+  </div> <!-- Closing outerWrapper -->
 </body>
 
 </html>
 
 <script>
+  let currentSentenceIndex = 1; // Start from the second hint since the first is already visible
+
+  function showNextSentence() {
+    const sentences = document.querySelectorAll('#sentences ol li');
+    const tippButton = document.getElementById('tippButton');
+
+    // Create raccoon explosion
+    for (let i = 0; i < 10; i++) {
+      const raccoon = document.createElement('div');
+      raccoon.classList.add('raccoon');
+      raccoon.style.setProperty('--x', Math.random() * 2 - 1); // Random x direction
+      raccoon.style.setProperty('--y', Math.random() * 2 - 1); // Random y direction
+      raccoon.style.left = `${tippButton.offsetLeft + tippButton.offsetWidth / 2}px`;
+      raccoon.style.top = `${tippButton.offsetTop + tippButton.offsetHeight / 2}px`;
+      document.body.appendChild(raccoon);
+
+      // Remove the raccoon after the animation ends
+      raccoon.addEventListener('animationend', () => {
+        raccoon.remove();
+      });
+    }
+
+    // Show the next sentence
+    if (currentSentenceIndex < sentences.length) {
+      sentences[currentSentenceIndex].style.display = 'list-item';
+      currentSentenceIndex++;
+    }
+    if (currentSentenceIndex === sentences.length) {
+      tippButton.style.display = 'none';
+      document.getElementById('weiterButton').style.display = 'block';
+    }
+  }
+
   function onClick() {
     window.location.href = 'second.html';
+  }
+
+  function onFoundHint() {
+    // Trigger confetti animation
+    confetti({
+      particleCount: 150,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+
+    // Redirect to the next page after a short delay
+    setTimeout(() => {
+      window.location.href = 'second.html';
+    }, 500); // 2-second delay for the confetti animation
   }
 </script>
