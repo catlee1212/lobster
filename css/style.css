@@ -61,19 +61,9 @@ button.btn {
   margin-top: 5vh;
   font-size: 20px;
   cursor: pointer;
-  color: #fff;
+  color: #000;
 }
 
-.age {
-  font-size: 39px;
-  font-weight: bolder;
-  background-color: var(--primary-color);
-  padding: 40px;
-  border-radius: 100%;
-  margin: 5vw;
-  color: #000;
-  border: 5px solid #000
-}
 
 .content {
   text-align: center;
@@ -118,7 +108,7 @@ input#inputField {
 .btn-second {
   background-color: #ffa500;
   /* Orange by default */
-  color: white;
+  color: #000;
   border: none;
   padding: 10px 20px;
   font-size: 16px;
@@ -175,4 +165,33 @@ input#inputField {
     /* Increased travel distance */
     opacity: 0;
   }
+}
+
+.age {
+  font-size: 39px;
+  font-weight: bolder;
+  background-color: var(--primary-color);
+  padding: 40px;
+  border-radius: 100%;
+  margin: 5vw;
+  color: #694400;
+  border: 5px solid #694400;
+  animation: spinCounterclockwise 3s linear infinite;
+
+}
+
+
+@keyframes spinCounterclockwise {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-360deg);
+    /* Counterclockwise rotation */
+  }
+}
+
+#sentences {
+  text-align: center;
 }
