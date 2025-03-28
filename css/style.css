@@ -56,14 +56,28 @@ button.btn {
   background-color: var(--primary-color);
   padding: 10px 20px;
   border: 0px;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-top: 5vh;
-  font-size: 20px;
+  margin-top: 2vh;
+  font-size: 17px;
   cursor: pointer;
   color: #000;
+  border-radius: 5px;
 }
 
+.btn-second.btn-tipp {
+  background-color: #303030;
+  color: #ffa500;
+}
+
+ol {
+  margin: 0px;
+  padding: 0px;
+}
+
+#sentences li {
+  margin: 10px 0px;
+  text-decoration: none;
+  list-style-type: none;
+}
 
 .content {
   text-align: center;
